@@ -1,5 +1,6 @@
 #!/bin/bash
 
+printf "##### INPUT #####\n"
 # Create test case 
 # To exit, enter CTRL+D
 cat > testcase
@@ -9,11 +10,6 @@ NAME=$1;
 
 # Compile to a.out
 g++ "${NAME}.cpp"  
-
-
-printf "##### INPUT #####\n"
-
-cat testcase 
 
 printf "##### OUTPUT #####\n"
 
