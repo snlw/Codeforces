@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NUMBER_OF_PROBLEMS=5
+NUMBER_OF_PROBLEMS=20
 
 MIN=1
 MAX=2000
@@ -22,7 +22,7 @@ get_random_problem () {
 }
 
 
-for i in {1..5}
+for (( i = 0; i < $NUMBER_OF_PROBLEMS; i++ ))
 do
     get_random_problem
 done
