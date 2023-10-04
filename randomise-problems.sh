@@ -4,7 +4,7 @@ NUMBER_OF_PROBLEMS=20
 
 MIN=1
 MAX=2000
-DIFFICULTY=("A" "B" "C" "D" "E")
+DIFFICULTY=("A" "B" "C")
 
 
 get_random_problem () {
