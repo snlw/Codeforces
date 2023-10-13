@@ -9,7 +9,7 @@ cat > testcase
 NAME=$1;
 
 # Compile to a.out
-g++ "${NAME}.cpp"  
+g++ "${NAME}"  
 
 printf "##### OUTPUT #####\n"
 
