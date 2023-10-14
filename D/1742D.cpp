@@ -9,21 +9,25 @@ void solve() {
   int n;
   cin >> n;
 
-  int arr[n];
-  for (int i = 0; i < n; i++){
+  map<long long, long long>map;
+
+  long long arr[n];
+
+  long long mx = 0;
+  for (int i = 1; i <= n; i++) {
     cin >> arr[i];
+    map[arr[i]] = i;
   }
 
-  int ans = -1;  
-
-  for (int i = n - 2; i >= 0; i--) {
-    if (__gcd(arr[n - 1], arr[i]) == 1) {
-      ans = n + i + 1;
-      break;
+  for (auto x: map) {
+    for (auto k: map) {
+      if (__gcd(k.first, x.first) == 1) {
+        mx = max(mx, (k.second + x.second));
+      }
     }
   }
 
-  cout << ans << endl;
+  cout << (mx ? mx : -1) << endl;
   return;
 }
 
