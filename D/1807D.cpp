@@ -7,7 +7,7 @@ using namespace std;
 void solve() {
   long long n, q;
   cin >> n >> q;
-  long long arr[200005], preCompute[200005];
+  long long arr[200001], preCompute[200001];
   long long sum = 0;
   for(int i = 1; i <= n; i++) {
     cin >> arr[i];
