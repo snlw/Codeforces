@@ -7,12 +7,13 @@ using namespace std;
 void solve() {
   long long n, q;
   cin >> n >> q;
-  long long arr[200000], preCompute[200000];
+  long long arr[200005], preCompute[200005];
   long long sum = 0;
   for(int i = 1; i <= n; i++) {
     cin >> arr[i];
     sum += arr[i];
-    preCompute[i] = preCompute[i - 1] + arr[i];
+    preCompute[i] = preCompute[i - 1];
+    preCompute[i] += arr[i];
   }
   // For each query
   for (int i = 0; i < q; i++) {
