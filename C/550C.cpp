@@ -1,49 +1,64 @@
-
+#include<bits/stdc++.h>
 #include<iostream>
+#include<cmath>
 
 using namespace std;
 
-void check8(string s){
-    int xxx = 0;
-    bool yes = false;
-
-    s = "00" + s;
-    int len = s.length();
-    for (int i = 0; i < len-2; i++){
-        //Hundreds 
-        xxx += 100*(s[i]-'0');
-        for (int j = i+1; j < len-1; j++){
-            //Tenths
-            xxx += 10*(s[j]-'0');
-            for (int k = j+1; k < len; k++){
-                //Ones
-                xxx += s[k] -'0';
-                if (xxx % 8  == 0){
-                    cout << "YES" << "\n";
-                    cout << xxx << "\n";
-                    return ;
-                }
-                xxx -= s[k] - '0';
-            }
-            xxx -= 10*(s[j] -'0');
-        }
-        xxx -= 100*(s[i] -'0');
+void solve() {
+  string n;
+  cin >> n; 
+ 
+  int len = n.length();
+  
+  for (int i = 0; i < len; i++) {
+    if (n[i] == '0' || n[i] == '8') {
+        cout << YES << endl;
+        cout << n[i] << endl;
+        return;
     }
-    
-    cout << "NO";
+}
+
+  if (len < 3) {
+    cout << NO << endl;
     return;
-};
+  }
+
+
+  for(int i = 0; i < len - 2; i++) {
+    for (int j = i + 1; j < len - 1; j++) {
+      for (int k = j + 1; k < len; k++) {
+        int number = 100*(n[i] - '0') + 10*(n[j] - '0') + (n[k] - '0');
+        if (number % 8 == 0) {
+          cout << YES << endl;
+          cout << number << endl;
+          return;
+        }
+      }
+    }
+  }
+  
+  for(int i = 0; i < len - 1; i++) {
+    for (int j = i + 1; j < len; j++) {
+        int number = 10*(n[i] - '0') + (n[j] - '0');
+        if (number % 8 == 0) {
+          cout << YES << endl;
+          cout << number << endl;
+          return;
+        }
+    }
+  }
+
+  cout << NO << endl;
+}
 
 int main(){
-    string in;
-    cin >> in;
 
-    // Divisible by 8 if xxx can be divided by 8
-    if (stoi(in) % 8  == 0)
-        cout << "YES" << "\n" << in <<"\n";
-    else
-        check8(in);
-    return 0;
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  solve();
+
+  return 0;
 }
 
 
