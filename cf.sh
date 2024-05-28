@@ -1,18 +1,38 @@
 #!/bin/bash
 
-printf "##### INPUT #####\n"
-# Create test case 
-# To exit, enter CTRL+D
-cat > testcase
+refresh_input() {
+    local filename="$1"
+    if [ -f "$filename" ]; then
+        rm "$filename"
+    else
+        touch "$filename"
+    fi
+}
 
-# Receive problem name from the first input
-NAME=$1;
+main() {
+    local INPUT_FILE="input.txt"
 
-# Compile to a.out
-g++ "${NAME}"  
+    refresh_input "$INPUT_FILE"
 
-printf "##### OUTPUT #####\n"
+    echo "##### IN #####"
 
-# Run code against test case
-./a.out < testcase
+    while read line
+    do
+        echo "$line" >> "$INPUT_FILE"
+    done
+
+    # Filename
+    NAME="$1";
+
+    # Compile to executable file called "program"
+    g++ "${NAME}" -o program 
+
+    echo "##### OUT #####"
+
+    # Execute with arguments
+    ./program < "$INPUT_FILE"
+}
+
+
+main "$@"
 
